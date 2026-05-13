@@ -9,25 +9,14 @@ export function AppNav() {
   return (
     <header className="border-b-2 border-ink bg-white">
       <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
-        <NavLink
-          className="font-display text-2xl uppercase leading-none text-ink no-underline"
-          to="/"
-        >
+        <NavLink className="font-display flex items-center gap-2 uppercase leading-none text-ink no-underline" to="/">
+          <img alt="pantri logo" className="h-8 w-8" src="/logo-pantri.png" width="128" />
           pantri
         </NavLink>
 
         <div className="flex gap-2">
           {navItems.map((item) => (
-            <NavLink
-              className={({ isActive }) =>
-                [
-                  "border-2 border-ink px-3 py-2 text-sm font-black uppercase text-ink no-underline shadow-brutal-sm",
-                  isActive ? "bg-butter" : "bg-white",
-                ].join(" ")
-              }
-              key={item.href}
-              to={item.href}
-            >
+            <NavLink className={({ isActive }) => ["border-2 border-ink px-3 py-2 text-sm font-black uppercase text-ink no-underline shadow-brutal-sm", isActive ? "bg-butter" : "bg-white"].join(" ")} key={item.href} to={item.href}>
               {item.label}
             </NavLink>
           ))}
