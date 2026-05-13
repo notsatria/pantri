@@ -118,20 +118,20 @@ git commit -m "feat: add save actions to recipe results"
 
 ### Task 5: Build Saved Recipes Management Page
 
-- [ ] **Step 1: Create saved page tests**
+- [x] **Step 1: Create saved page tests**
 
 Test empty state and rendering saved recipe data seeded into localStorage.
 
-- [ ] **Step 2: Implement saved page**
+- [x] **Step 2: Implement saved page**
 
 Use `useSavedRecipes` to list saved recipes, open detail modal, remove one recipe, and clear all recipes.
 
-- [ ] **Step 3: Run saved page tests**
+- [x] **Step 3: Run saved page tests**
 
 Run: `npm test -- src/pages/SavedRecipesPage.test.jsx`
 Expected: PASS.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/SavedRecipesPage.jsx src/pages/SavedRecipesPage.test.jsx
