@@ -46,7 +46,7 @@
 - Create: `src/main.jsx`
 - Create: `src/App.jsx`
 
-- [ ] **Step 1: Create package metadata and scripts**
+- [x] **Step 1: Create package metadata and scripts**
 
 ```json
 {
@@ -64,7 +64,7 @@
 }
 ```
 
-- [ ] **Step 2: Create the Vite HTML shell**
+- [x] **Step 2: Create the Vite HTML shell**
 
 ```html
 <!doctype html>
@@ -81,7 +81,7 @@
 </html>
 ```
 
-- [ ] **Step 3: Create the React entry point**
+- [x] **Step 3: Create the React entry point**
 
 ```jsx
 import React from "react";
@@ -96,7 +96,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-- [ ] **Step 4: Create the app shell**
+- [x] **Step 4: Create the app shell**
 
 ```jsx
 import { HomePage } from "./pages/HomePage";
@@ -106,7 +106,7 @@ export default function App() {
 }
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add package.json index.html vite.config.js src/main.jsx src/App.jsx
@@ -120,7 +120,7 @@ git commit -m "chore: scaffold pantri app shell"
 - Create: `postcss.config.js`
 - Create: `src/index.css`
 
-- [ ] **Step 1: Define Tailwind content scanning and theme tokens**
+- [x] **Step 1: Define Tailwind content scanning and theme tokens**
 
 ```js
 export default {
@@ -147,7 +147,7 @@ export default {
 };
 ```
 
-- [ ] **Step 2: Add the PostCSS config**
+- [x] **Step 2: Add the PostCSS config**
 
 ```js
 export default {
@@ -158,7 +158,7 @@ export default {
 };
 ```
 
-- [ ] **Step 3: Create the global CSS with Tailwind directives and base theme**
+- [x] **Step 3: Create the global CSS with Tailwind directives and base theme**
 
 ```css
 @tailwind base;
@@ -182,7 +182,7 @@ body {
 }
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add tailwind.config.js postcss.config.js src/index.css
@@ -200,7 +200,7 @@ git commit -m "feat: add pantri visual foundation"
 - Create: `src/components/SearchButton.jsx`
 - Create: `src/constants/cuisines.js`
 
-- [ ] **Step 1: Create cuisine constants**
+- [x] **Step 1: Create cuisine constants**
 
 ```js
 export const cuisines = [
@@ -219,7 +219,7 @@ export const cuisines = [
 ];
 ```
 
-- [ ] **Step 2: Build the hero and form components with props-only contracts**
+- [x] **Step 2: Build the hero and form components with props-only contracts**
 
 ```jsx
 export function HeroSection() {
@@ -233,7 +233,7 @@ export function HeroSection() {
 }
 ```
 
-- [ ] **Step 3: Compose the page with static state placeholders**
+- [x] **Step 3: Compose the page with static state placeholders**
 
 ```jsx
 export function HomePage() {
@@ -254,7 +254,7 @@ export function HomePage() {
 }
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/HomePage.jsx src/components/HeroSection.jsx src/components/CuisineSelect.jsx src/components/IngredientComposer.jsx src/components/IngredientChipList.jsx src/components/SearchButton.jsx src/constants/cuisines.js
@@ -267,7 +267,7 @@ git commit -m "feat: add pantri home page structure"
 - Create: `src/utils/ingredients.js`
 - Create: `src/utils/ingredients.test.js`
 
-- [ ] **Step 1: Write the failing utility tests**
+- [x] **Step 1: Write the failing utility tests**
 
 ```js
 import { describe, expect, it } from "vitest";
@@ -286,12 +286,12 @@ describe("canAddIngredient", () => {
 });
 ```
 
-- [ ] **Step 2: Run tests to verify failure**
+- [x] **Step 2: Run tests to verify failure**
 
 Run: `npm test -- src/utils/ingredients.test.js`
 Expected: FAIL with module or export errors
 
-- [ ] **Step 3: Write minimal utility implementation**
+- [x] **Step 3: Write minimal utility implementation**
 
 ```js
 export function normalizeIngredientName(value) {
@@ -310,12 +310,12 @@ export function canAddIngredient(existingIngredients, nextValue, maxIngredients 
 }
 ```
 
-- [ ] **Step 4: Run tests to verify pass**
+- [x] **Step 4: Run tests to verify pass**
 
 Run: `npm test -- src/utils/ingredients.test.js`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/utils/ingredients.js src/utils/ingredients.test.js
@@ -330,7 +330,7 @@ git commit -m "test: add ingredient validation utilities"
 - Create: `src/hooks/useRecipeSearch.js`
 - Create: `src/hooks/useRecipeSearch.test.jsx`
 
-- [ ] **Step 1: Write the failing hook test for success and error states**
+- [x] **Step 1: Write the failing hook test for success and error states**
 
 ```jsx
 import { renderHook, act, waitFor } from "@testing-library/react";
@@ -352,12 +352,12 @@ describe("useRecipeSearch", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify failure**
+- [x] **Step 2: Run test to verify failure**
 
 Run: `npm test -- src/hooks/useRecipeSearch.test.jsx`
 Expected: FAIL with missing hook or service
 
-- [ ] **Step 3: Add mock recipes, async mock search, and hook state**
+- [x] **Step 3: Add mock recipes, async mock search, and hook state**
 
 ```jsx
 const initialState = {
@@ -389,12 +389,12 @@ export function useRecipeSearch() {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify pass**
+- [x] **Step 4: Run tests to verify pass**
 
 Run: `npm test -- src/hooks/useRecipeSearch.test.jsx`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/mocks/recipes.js src/mocks/searchRecipes.js src/hooks/useRecipeSearch.js src/hooks/useRecipeSearch.test.jsx
