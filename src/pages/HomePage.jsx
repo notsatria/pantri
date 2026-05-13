@@ -1,10 +1,49 @@
+import { useState } from "react";
 import { cuisines } from "../constants/cuisines";
 import { CuisineSelect } from "../components/CuisineSelect";
 import { HeroSection } from "../components/HeroSection";
 import { IngredientComposer } from "../components/IngredientComposer";
 import { SearchButton } from "../components/SearchButton";
+import { useRecipeSearch } from "../hooks/useRecipeSearch";
+import { canAddIngredient, normalizeIngredientName } from "../utils/ingredients";
 
 export function HomePage() {
+  const [selectedCuisine, setSelectedCuisine] = useState("Indonesia");
+  const [draftIngredient, setDraftIngredient] = useState("");
+  const [ingredients, setIngredients] = useState([]);
+  const { status, recipes, errorMessage, search } = useRecipeSearch();
+  const ingredientNames = ingredients.map((ingredient) => ingredient.name);
+  const isSearching = status === "loading";
+
+  function handleAddIngredient() {
+    if (!canAddIngredient(ingredientNames, draftIngredient)) {
+      return;
+    }
+
+    const name = normalizeIngredientName(draftIngredient);
+    setIngredients((currentIngredients) => [
+      ...currentIngredients,
+      {
+        id: `${name}-${Date.now()}`,
+        name,
+      },
+    ]);
+    setDraftIngredient("");
+  }
+
+  function handleRemoveIngredient(id) {
+    setIngredients((currentIngredients) =>
+      currentIngredients.filter((ingredient) => ingredient.id !== id),
+    );
+  }
+
+  async function handleSearch() {
+    await search({
+      cuisine: selectedCuisine,
+      ingredients: ingredientNames,
+    });
+  }
+
   return (
     <main className="min-h-screen">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -27,22 +66,22 @@ export function HomePage() {
               <CuisineSelect
                 label="Pilih gaya masakan"
                 options={cuisines}
-                value="Indonesia"
-                onChange={() => {}}
+                value={selectedCuisine}
+                onChange={(event) => setSelectedCuisine(event.target.value)}
               />
 
               <IngredientComposer
-                draftValue=""
-                ingredients={[]}
-                onAddIngredient={() => {}}
-                onDraftChange={() => {}}
-                onRemoveIngredient={() => {}}
+                draftValue={draftIngredient}
+                ingredients={ingredients}
+                onAddIngredient={handleAddIngredient}
+                onDraftChange={(event) => setDraftIngredient(event.target.value)}
+                onRemoveIngredient={handleRemoveIngredient}
               />
 
               <SearchButton
-                disabled
-                loading={false}
-                onClick={() => {}}
+                disabled={!ingredients.length || isSearching}
+                loading={isSearching}
+                onClick={handleSearch}
               />
             </div>
           </div>
@@ -64,6 +103,33 @@ export function HomePage() {
             </div>
           </aside>
         </section>
+
+        {errorMessage ? (
+          <p className="border-2 border-ink bg-danger p-4 font-black text-white shadow-brutal">
+            {errorMessage}
+          </p>
+        ) : null}
+
+        {recipes.length ? (
+          <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {recipes.map((recipe) => (
+              <article
+                className="border-2 border-ink bg-white p-5 shadow-brutal"
+                key={recipe.id}
+              >
+                <p className="m-0 text-sm font-black uppercase tracking-[0.14em]">
+                  {recipe.cuisine} / {recipe.duration}
+                </p>
+                <h3 className="mb-2 mt-3 font-display text-xl uppercase">
+                  {recipe.name}
+                </h3>
+                <p className="m-0 text-sm font-bold text-ink/75">
+                  {recipe.summary}
+                </p>
+              </article>
+            ))}
+          </section>
+        ) : null}
       </div>
     </main>
   );

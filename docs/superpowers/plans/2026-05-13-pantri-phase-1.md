@@ -409,7 +409,7 @@ git commit -m "feat: add mock recipe search flow"
 - Modify: `src/components/IngredientChipList.jsx`
 - Modify: `src/components/CuisineSelect.jsx`
 
-- [ ] **Step 1: Write the failing page interaction test**
+- [x] **Step 1: Write the failing page interaction test**
 
 ```jsx
 import { render, screen } from "@testing-library/react";
@@ -431,12 +431,12 @@ describe("HomePage", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify failure**
+- [x] **Step 2: Run test to verify failure**
 
 Run: `npm test -- src/pages/HomePage.test.jsx`
 Expected: FAIL because page is still static
 
-- [ ] **Step 3: Implement page state, input flow, and search wiring**
+- [x] **Step 3: Implement page state, input flow, and search wiring**
 
 ```jsx
 const [selectedCuisine, setSelectedCuisine] = useState("Indonesia");
@@ -454,12 +454,12 @@ await search({
 });
 ```
 
-- [ ] **Step 4: Run tests to verify pass**
+- [x] **Step 4: Run tests to verify pass**
 
 Run: `npm test -- src/pages/HomePage.test.jsx`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pages/HomePage.jsx src/components/IngredientComposer.jsx src/components/IngredientChipList.jsx src/components/CuisineSelect.jsx src/pages/HomePage.test.jsx

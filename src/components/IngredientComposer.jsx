@@ -7,6 +7,13 @@ export function IngredientComposer({
   onDraftChange,
   onRemoveIngredient,
 }) {
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      onAddIngredient();
+    }
+  }
+
   return (
     <div className="space-y-3">
       <div>
@@ -22,6 +29,7 @@ export function IngredientComposer({
             aria-label="Tambah bahan"
             className="min-w-0 flex-1 border-2 border-ink bg-white px-4 py-3 text-base font-bold shadow-brutal-sm outline-none placeholder:font-semibold placeholder:text-ink/60 focus:-translate-y-0.5"
             onChange={onDraftChange}
+            onKeyDown={handleKeyDown}
             placeholder="Contoh: ayam, tomat, bawang putih"
             value={draftValue}
           />
