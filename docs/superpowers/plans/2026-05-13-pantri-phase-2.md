@@ -40,24 +40,24 @@ git commit -m "docs: add pantri phase 2 plan"
 
 ### Task 2: Add Saved Recipe Storage Hook
 
-- [ ] **Step 1: Create localStorage helpers**
+- [x] **Step 1: Create localStorage helpers**
 
 Create `src/utils/localStorage.js` with safe JSON read/write helpers and key `pantri_saved_recipes`.
 
-- [ ] **Step 2: Create `useSavedRecipes` tests**
+- [x] **Step 2: Create `useSavedRecipes` tests**
 
 Cover initial empty state, saving a recipe, duplicate prevention, removing one recipe, clearing all recipes, and max capacity.
 
-- [ ] **Step 3: Implement `useSavedRecipes`**
+- [x] **Step 3: Implement `useSavedRecipes`**
 
 The hook should expose `savedRecipes`, `saveRecipe`, `removeRecipe`, `clearSavedRecipes`, `isRecipeSaved`, and `statusMessage`.
 
-- [ ] **Step 4: Run hook tests**
+- [x] **Step 4: Run hook tests**
 
 Run: `npm test -- src/hooks/useSavedRecipes.test.jsx`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/utils/localStorage.js src/hooks/useSavedRecipes.js src/hooks/useSavedRecipes.test.jsx
