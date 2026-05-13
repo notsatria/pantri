@@ -140,22 +140,22 @@ git commit -m "feat: add saved recipes management page"
 
 ### Task 6: Verify Phase 2
 
-- [ ] **Step 1: Run full tests**
+- [x] **Step 1: Run full tests**
 
 Run: `npm test`
 Expected: PASS.
 
-- [ ] **Step 2: Run production build**
+- [x] **Step 2: Run production build**
 
 Run: `npm run build`
 Expected: PASS.
 
-- [ ] **Step 3: Check git status**
+- [x] **Step 3: Check git status**
 
 Run: `git status --short`
 Expected: only intended checklist changes before final commit.
 
-- [ ] **Step 4: Commit final checklist**
+- [x] **Step 4: Commit final checklist**
 
 ```bash
 git add docs/superpowers/plans/2026-05-13-pantri-phase-2.md
