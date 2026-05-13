@@ -10,6 +10,7 @@ import { RecipeSkeletonList } from "../components/RecipeSkeletonList";
 import { SearchButton } from "../components/SearchButton";
 import { useRecipeSearch } from "../hooks/useRecipeSearch";
 import { useSavedRecipes } from "../hooks/useSavedRecipes";
+import { getRecipeProviderMode } from "../services/recipeSearch";
 import { canAddIngredient, normalizeIngredientName } from "../utils/ingredients";
 
 export function HomePage() {
@@ -21,6 +22,7 @@ export function HomePage() {
   const { saveRecipe, isRecipeSaved, statusMessage } = useSavedRecipes();
   const ingredientNames = ingredients.map((ingredient) => ingredient.name);
   const isSearching = status === "loading";
+  const providerMode = getRecipeProviderMode();
 
   function handleAddIngredient() {
     if (!canAddIngredient(ingredientNames, draftIngredient)) {
@@ -62,7 +64,7 @@ export function HomePage() {
             <div className="mb-6 flex items-center justify-between gap-4">
               <div>
                 <p className="mb-2 inline-block border-2 border-ink bg-butter px-3 py-1 text-xs font-black uppercase tracking-[0.2em]">
-                  Phase 1
+                  {providerMode === "groq" ? "AI Groq aktif" : "Demo mock"}
                 </p>
                 <h2 className="m-0 font-display text-2xl uppercase sm:text-3xl">
                   Cari ide masak dari bahanmu

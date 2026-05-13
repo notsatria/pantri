@@ -8,7 +8,9 @@ export function ErrorBanner({ message, onRetry }) {
         <p className="m-0 text-sm font-black uppercase tracking-[0.14em]">
           Resep belum matang
         </p>
-        <p className="mb-0 mt-1 font-bold">{message}</p>
+        <p className="mb-0 mt-1 font-bold">
+          {message || "Pantri belum bisa memuat rekomendasi. Coba lagi sebentar."}
+        </p>
       </div>
       <button
         className="border-2 border-ink bg-white px-4 py-3 font-black uppercase tracking-[0.1em] text-ink shadow-brutal-sm"

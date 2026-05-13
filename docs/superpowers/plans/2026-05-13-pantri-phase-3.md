@@ -46,10 +46,10 @@
 
 ### Task 4: Add UI Feedback For AI Provider
 
-- [ ] **Step 1: Surface provider mode in HomePage**
-- [ ] **Step 2: Improve error banner copy for API/config failures**
-- [ ] **Step 3: Update page tests**
-- [ ] **Step 4: Commit**
+- [x] **Step 1: Surface provider mode in HomePage**
+- [x] **Step 2: Improve error banner copy for API/config failures**
+- [x] **Step 3: Update page tests**
+- [x] **Step 4: Commit**
 
 ### Task 5: Verify Phase 3
 

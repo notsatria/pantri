@@ -22,6 +22,8 @@ describe("HomePage", () => {
     const user = userEvent.setup();
     renderHomePage();
 
+    expect(screen.getByText(/demo mock/i)).toBeInTheDocument();
+
     await user.type(screen.getByLabelText(/tambah bahan/i), "ayam");
     await user.click(screen.getByRole("button", { name: /\+/i }));
     await user.click(screen.getByRole("button", { name: /cari resep/i }));
