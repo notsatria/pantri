@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 
-export function RecipeDetailModal({ recipe, open, onClose }) {
+export function RecipeDetailModal({
+  recipe,
+  open,
+  onClose,
+  onSaveRecipe,
+  isSaved = false,
+}) {
   useEffect(() => {
     if (!open) {
       return undefined;
@@ -79,6 +85,17 @@ export function RecipeDetailModal({ recipe, open, onClose }) {
             <h3 className="m-0 mb-1 font-display text-lg uppercase">Tips</h3>
             <p className="m-0">{recipe.tips}</p>
           </section>
+        ) : null}
+
+        {onSaveRecipe ? (
+          <button
+            className="mt-5 w-full border-2 border-ink bg-butter px-4 py-3 font-black uppercase tracking-[0.1em] text-ink shadow-brutal-sm disabled:cursor-not-allowed disabled:bg-paper disabled:shadow-none"
+            disabled={isSaved}
+            onClick={() => onSaveRecipe(recipe)}
+            type="button"
+          >
+            {isSaved ? "Sudah Tersimpan" : "Simpan Resep"}
+          </button>
         ) : null}
       </article>
     </div>

@@ -9,6 +9,7 @@ import { RecipeGrid } from "../components/RecipeGrid";
 import { RecipeSkeletonList } from "../components/RecipeSkeletonList";
 import { SearchButton } from "../components/SearchButton";
 import { useRecipeSearch } from "../hooks/useRecipeSearch";
+import { useSavedRecipes } from "../hooks/useSavedRecipes";
 import { canAddIngredient, normalizeIngredientName } from "../utils/ingredients";
 
 export function HomePage() {
@@ -17,6 +18,7 @@ export function HomePage() {
   const [ingredients, setIngredients] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const { status, recipes, errorMessage, search } = useRecipeSearch();
+  const { saveRecipe, isRecipeSaved, statusMessage } = useSavedRecipes();
   const ingredientNames = ingredients.map((ingredient) => ingredient.name);
   const isSearching = status === "loading";
 
@@ -117,12 +119,28 @@ export function HomePage() {
         ) : null}
 
         {status === "success" ? (
-          <RecipeGrid recipes={recipes} onOpenDetail={setSelectedRecipe} />
+          <RecipeGrid
+            isRecipeSaved={isRecipeSaved}
+            onOpenDetail={setSelectedRecipe}
+            onSaveRecipe={saveRecipe}
+            recipes={recipes}
+          />
+        ) : null}
+
+        {statusMessage ? (
+          <p
+            aria-live="polite"
+            className="border-2 border-ink bg-mint p-4 font-black shadow-brutal"
+          >
+            {statusMessage}
+          </p>
         ) : null}
       </div>
 
       <RecipeDetailModal
+        isSaved={selectedRecipe ? isRecipeSaved(selectedRecipe.id) : false}
         onClose={() => setSelectedRecipe(null)}
+        onSaveRecipe={saveRecipe}
         open={Boolean(selectedRecipe)}
         recipe={selectedRecipe}
       />

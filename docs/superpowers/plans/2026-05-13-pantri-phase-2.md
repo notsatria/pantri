@@ -92,24 +92,24 @@ git commit -m "feat: add saved recipes route"
 
 ### Task 4: Wire Save Actions Into Recipe Results
 
-- [ ] **Step 1: Extend page tests**
+- [x] **Step 1: Extend page tests**
 
 Update `src/pages/HomePage.test.jsx` to save a recipe and assert saved state appears.
 
-- [ ] **Step 2: Update recipe components**
+- [x] **Step 2: Update recipe components**
 
 Add `onSaveRecipe` and `isRecipeSaved` props to `RecipeGrid`, `RecipeCard`, and `RecipeDetailModal`.
 
-- [ ] **Step 3: Wire `useSavedRecipes` into `HomePage`**
+- [x] **Step 3: Wire `useSavedRecipes` into `HomePage`**
 
 Pass save handlers into recipe result components and show a short status message.
 
-- [ ] **Step 4: Run page tests**
+- [x] **Step 4: Run page tests**
 
 Run: `npm test -- src/pages/HomePage.test.jsx`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pages/HomePage.jsx src/pages/HomePage.test.jsx src/components/RecipeGrid.jsx src/components/RecipeCard.jsx src/components/RecipeDetailModal.jsx

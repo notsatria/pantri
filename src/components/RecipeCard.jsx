@@ -1,4 +1,4 @@
-export function RecipeCard({ recipe, onOpenDetail }) {
+export function RecipeCard({ recipe, onOpenDetail, onSaveRecipe, isSaved = false }) {
   return (
     <article className="flex min-h-[280px] flex-col border-2 border-ink bg-white p-5 shadow-brutal">
       <div className="mb-4 flex flex-wrap gap-2">
@@ -25,13 +25,23 @@ export function RecipeCard({ recipe, onOpenDetail }) {
         <p className="mb-5 mt-0 text-sm font-bold">
           {recipe.ingredients.slice(0, 4).join(", ")}
         </p>
-        <button
-          className="w-full border-2 border-ink bg-ink px-4 py-3 font-black uppercase tracking-[0.1em] text-butter shadow-brutal-sm transition hover:-translate-y-0.5"
-          onClick={() => onOpenDetail(recipe)}
-          type="button"
-        >
-          Lihat Detail
-        </button>
+        <div className="grid gap-2">
+          <button
+            className="w-full border-2 border-ink bg-ink px-4 py-3 font-black uppercase tracking-[0.1em] text-butter shadow-brutal-sm transition hover:-translate-y-0.5"
+            onClick={() => onOpenDetail(recipe)}
+            type="button"
+          >
+            Lihat Detail
+          </button>
+          <button
+            className="w-full border-2 border-ink bg-butter px-4 py-3 font-black uppercase tracking-[0.1em] text-ink shadow-brutal-sm transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:bg-paper disabled:shadow-none"
+            disabled={isSaved}
+            onClick={() => onSaveRecipe(recipe)}
+            type="button"
+          >
+            {isSaved ? "Tersimpan" : "Simpan"}
+          </button>
+        </div>
       </div>
     </article>
   );

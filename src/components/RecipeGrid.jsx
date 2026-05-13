@@ -1,6 +1,11 @@
 import { RecipeCard } from "./RecipeCard";
 
-export function RecipeGrid({ recipes, onOpenDetail }) {
+export function RecipeGrid({
+  recipes,
+  onOpenDetail,
+  onSaveRecipe,
+  isRecipeSaved,
+}) {
   if (!recipes.length) {
     return (
       <section className="border-2 border-ink bg-white p-6 shadow-brutal">
@@ -19,8 +24,10 @@ export function RecipeGrid({ recipes, onOpenDetail }) {
     >
       {recipes.map((recipe) => (
         <RecipeCard
+          isSaved={isRecipeSaved(recipe.id)}
           key={recipe.id}
           onOpenDetail={onOpenDetail}
+          onSaveRecipe={onSaveRecipe}
           recipe={recipe}
         />
       ))}
