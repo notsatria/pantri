@@ -30,11 +30,11 @@
 
 ### Task 2: Add Prompt Builder And Parser
 
-- [ ] **Step 1: Implement prompt builder**
-- [ ] **Step 2: Implement response parser/normalizer**
-- [ ] **Step 3: Add tests**
-- [ ] **Step 4: Run tests**
-- [ ] **Step 5: Commit**
+- [x] **Step 1: Implement prompt builder**
+- [x] **Step 2: Implement response parser/normalizer**
+- [x] **Step 3: Add tests**
+- [x] **Step 4: Run tests**
+- [x] **Step 5: Commit**
 
 ### Task 3: Add Groq Service And Provider Selection
 
