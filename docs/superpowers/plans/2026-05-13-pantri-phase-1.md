@@ -524,22 +524,22 @@ git commit -m "feat: add recipe result states and detail modal"
 - Modify: `package.json`
 - Create or modify only if needed during verification fixes
 
-- [ ] **Step 1: Run production build**
+- [x] **Step 1: Run production build**
 
 Run: `npm run build`
 Expected: PASS with generated `dist/`
 
-- [ ] **Step 2: Run full tests**
+- [x] **Step 2: Run full tests**
 
 Run: `npm test`
 Expected: PASS
 
-- [ ] **Step 3: Review changed files for accidental scope creep**
+- [x] **Step 3: Review changed files for accidental scope creep**
 
 Run: `git status --short`
 Expected: only intended project files are changed
 
-- [ ] **Step 4: Commit any verification-only fixes**
+- [x] **Step 4: Commit any verification-only fixes**
 
 ```bash
 git add .
