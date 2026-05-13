@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { searchRecipes as defaultSearchRecipes } from "../mocks/searchRecipes";
+import { searchRecipes as defaultSearchRecipes } from "../services/recipeSearch";
 
 const initialState = {
   status: "idle",

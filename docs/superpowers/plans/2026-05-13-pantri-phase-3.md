@@ -38,11 +38,11 @@
 
 ### Task 3: Add Groq Service And Provider Selection
 
-- [ ] **Step 1: Implement Groq fetch service**
-- [ ] **Step 2: Add provider service with mock fallback**
-- [ ] **Step 3: Add tests for API success/error/fallback**
-- [ ] **Step 4: Wire `useRecipeSearch` to provider service**
-- [ ] **Step 5: Commit**
+- [x] **Step 1: Implement Groq fetch service**
+- [x] **Step 2: Add provider service with mock fallback**
+- [x] **Step 3: Add tests for API success/error/fallback**
+- [x] **Step 4: Wire `useRecipeSearch` to provider service**
+- [x] **Step 5: Commit**
 
 ### Task 4: Add UI Feedback For AI Provider
 
