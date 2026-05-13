@@ -66,24 +66,24 @@ git commit -m "feat: add saved recipes storage hook"
 
 ### Task 3: Add Routing And Navigation
 
-- [ ] **Step 1: Create `AppNav`**
+- [x] **Step 1: Create `AppNav`**
 
 Create a compact neobrutalist nav with links to `/` and `/saved`.
 
-- [ ] **Step 2: Update `App.jsx` routes**
+- [x] **Step 2: Update `App.jsx` routes**
 
 Use `BrowserRouter`, `Routes`, and `Route` for home and saved pages.
 
-- [ ] **Step 3: Create a temporary `SavedRecipesPage` shell**
+- [x] **Step 3: Create a temporary `SavedRecipesPage` shell**
 
 Render heading, empty state, and back link placeholder.
 
-- [ ] **Step 4: Run build**
+- [x] **Step 4: Run build**
 
 Run: `npm run build`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/App.jsx src/components/AppNav.jsx src/pages/SavedRecipesPage.jsx
