@@ -41,9 +41,7 @@ export function HomePage() {
   }
 
   function handleRemoveIngredient(id) {
-    setIngredients((currentIngredients) =>
-      currentIngredients.filter((ingredient) => ingredient.id !== id),
-    );
+    setIngredients((currentIngredients) => currentIngredients.filter((ingredient) => ingredient.id !== id));
   }
 
   async function handleSearch() {
@@ -63,89 +61,43 @@ export function HomePage() {
           <div className="border-2 border-ink bg-white p-6 shadow-brutal">
             <div className="mb-6 flex items-center justify-between gap-4">
               <div>
-                <p className="mb-2 inline-block border-2 border-ink bg-butter px-3 py-1 text-xs font-black uppercase tracking-[0.2em]">
-                  {providerMode === "groq" ? "AI Groq aktif" : "Demo mock"}
-                </p>
-                <h2 className="m-0 font-display text-2xl uppercase sm:text-3xl">
-                  Cari ide masak dari bahanmu
-                </h2>
+                <h2 className="m-0 font-display text-2xl uppercase sm:text-3xl">Cari ide masak dari bahanmu</h2>
               </div>
             </div>
 
             <div className="space-y-5">
-              <CuisineSelect
-                label="Pilih gaya masakan"
-                options={cuisines}
-                value={selectedCuisine}
-                onChange={(event) => setSelectedCuisine(event.target.value)}
-              />
+              <CuisineSelect label="Pilih gaya masakan" options={cuisines} value={selectedCuisine} onChange={(event) => setSelectedCuisine(event.target.value)} />
 
-              <IngredientComposer
-                draftValue={draftIngredient}
-                ingredients={ingredients}
-                onAddIngredient={handleAddIngredient}
-                onDraftChange={(event) => setDraftIngredient(event.target.value)}
-                onRemoveIngredient={handleRemoveIngredient}
-              />
+              <IngredientComposer draftValue={draftIngredient} ingredients={ingredients} onAddIngredient={handleAddIngredient} onDraftChange={(event) => setDraftIngredient(event.target.value)} onRemoveIngredient={handleRemoveIngredient} />
 
-              <SearchButton
-                disabled={!ingredients.length || isSearching}
-                loading={isSearching}
-                onClick={handleSearch}
-              />
+              <SearchButton disabled={!ingredients.length || isSearching} loading={isSearching} onClick={handleSearch} />
             </div>
           </div>
 
           <aside className="border-2 border-ink bg-[#ffddd2] p-6 shadow-brutal">
-            <p className="m-0 mb-3 inline-block border-2 border-ink bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.2em]">
-              Cara kerja
-            </p>
+            <p className="m-0 mb-3 inline-block border-2 border-ink bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.2em]">Cara kerja</p>
             <ol className="m-0 space-y-3 pl-5 text-sm font-bold sm:text-base">
               <li>Masukkan bahan yang sudah ada di dapur atau kulkas.</li>
               <li>Pilih jenis masakan yang lagi kamu pengen.</li>
               <li>Biarkan pantri menyiapkan inspirasi menu yang terasa masuk akal.</li>
             </ol>
-            <div className="mt-6 border-2 border-ink bg-white p-4">
-              <p className="m-0 text-sm font-bold">
-                Nanti di phase ini kamu akan dapat loading skeleton, hasil resep mock,
-                dan detail resep yang bisa dibuka tanpa perlu backend dulu.
-              </p>
-            </div>
           </aside>
         </section>
 
         {status === "loading" ? <RecipeSkeletonList count={3} /> : null}
 
-        {status === "error" ? (
-          <ErrorBanner message={errorMessage} onRetry={handleSearch} />
-        ) : null}
+        {status === "error" ? <ErrorBanner message={errorMessage} onRetry={handleSearch} /> : null}
 
-        {status === "success" ? (
-          <RecipeGrid
-            isRecipeSaved={isRecipeSaved}
-            onOpenDetail={setSelectedRecipe}
-            onSaveRecipe={saveRecipe}
-            recipes={recipes}
-          />
-        ) : null}
+        {status === "success" ? <RecipeGrid isRecipeSaved={isRecipeSaved} onOpenDetail={setSelectedRecipe} onSaveRecipe={saveRecipe} recipes={recipes} /> : null}
 
         {statusMessage ? (
-          <p
-            aria-live="polite"
-            className="border-2 border-ink bg-mint p-4 font-black shadow-brutal"
-          >
+          <p aria-live="polite" className="border-2 border-ink bg-mint p-4 font-black shadow-brutal">
             {statusMessage}
           </p>
         ) : null}
       </div>
 
-      <RecipeDetailModal
-        isSaved={selectedRecipe ? isRecipeSaved(selectedRecipe.id) : false}
-        onClose={() => setSelectedRecipe(null)}
-        onSaveRecipe={saveRecipe}
-        open={Boolean(selectedRecipe)}
-        recipe={selectedRecipe}
-      />
+      <RecipeDetailModal isSaved={selectedRecipe ? isRecipeSaved(selectedRecipe.id) : false} onClose={() => setSelectedRecipe(null)} onSaveRecipe={saveRecipe} open={Boolean(selectedRecipe)} recipe={selectedRecipe} />
     </main>
   );
 }
