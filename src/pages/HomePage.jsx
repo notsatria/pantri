@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { cuisines } from "../constants/cuisines";
 import { CuisineSelect } from "../components/CuisineSelect";
+import { ErrorBanner } from "../components/ErrorBanner";
 import { HeroSection } from "../components/HeroSection";
 import { IngredientComposer } from "../components/IngredientComposer";
+import { RecipeDetailModal } from "../components/RecipeDetailModal";
+import { RecipeGrid } from "../components/RecipeGrid";
+import { RecipeSkeletonList } from "../components/RecipeSkeletonList";
 import { SearchButton } from "../components/SearchButton";
 import { useRecipeSearch } from "../hooks/useRecipeSearch";
 import { canAddIngredient, normalizeIngredientName } from "../utils/ingredients";
@@ -11,6 +15,7 @@ export function HomePage() {
   const [selectedCuisine, setSelectedCuisine] = useState("Indonesia");
   const [draftIngredient, setDraftIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
   const { status, recipes, errorMessage, search } = useRecipeSearch();
   const ingredientNames = ingredients.map((ingredient) => ingredient.name);
   const isSearching = status === "loading";
@@ -38,6 +43,7 @@ export function HomePage() {
   }
 
   async function handleSearch() {
+    setSelectedRecipe(null);
     await search({
       cuisine: selectedCuisine,
       ingredients: ingredientNames,
@@ -104,33 +110,22 @@ export function HomePage() {
           </aside>
         </section>
 
-        {errorMessage ? (
-          <p className="border-2 border-ink bg-danger p-4 font-black text-white shadow-brutal">
-            {errorMessage}
-          </p>
+        {status === "loading" ? <RecipeSkeletonList count={3} /> : null}
+
+        {status === "error" ? (
+          <ErrorBanner message={errorMessage} onRetry={handleSearch} />
         ) : null}
 
-        {recipes.length ? (
-          <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {recipes.map((recipe) => (
-              <article
-                className="border-2 border-ink bg-white p-5 shadow-brutal"
-                key={recipe.id}
-              >
-                <p className="m-0 text-sm font-black uppercase tracking-[0.14em]">
-                  {recipe.cuisine} / {recipe.duration}
-                </p>
-                <h3 className="mb-2 mt-3 font-display text-xl uppercase">
-                  {recipe.name}
-                </h3>
-                <p className="m-0 text-sm font-bold text-ink/75">
-                  {recipe.summary}
-                </p>
-              </article>
-            ))}
-          </section>
+        {status === "success" ? (
+          <RecipeGrid recipes={recipes} onOpenDetail={setSelectedRecipe} />
         ) : null}
       </div>
+
+      <RecipeDetailModal
+        onClose={() => setSelectedRecipe(null)}
+        open={Boolean(selectedRecipe)}
+        recipe={selectedRecipe}
+      />
     </main>
   );
 }

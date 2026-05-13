@@ -476,7 +476,7 @@ git commit -m "feat: wire pantri ingredient search flow"
 - Create: `src/components/ErrorBanner.jsx`
 - Modify: `src/pages/HomePage.jsx`
 
-- [ ] **Step 1: Extend the page test to cover loading, error, and detail modal**
+- [x] **Step 1: Extend the page test to cover loading, error, and detail modal**
 
 ```jsx
 it("opens the recipe detail modal from a search result", async () => {
@@ -492,12 +492,12 @@ it("opens the recipe detail modal from a search result", async () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify failure**
+- [x] **Step 2: Run test to verify failure**
 
 Run: `npm test -- src/pages/HomePage.test.jsx`
 Expected: FAIL because result-state components do not exist yet
 
-- [ ] **Step 3: Implement skeletons, grid, cards, error banner, and modal**
+- [x] **Step 3: Implement skeletons, grid, cards, error banner, and modal**
 
 ```jsx
 {status === "loading" ? <RecipeSkeletonList count={3} /> : null}
@@ -506,12 +506,12 @@ Expected: FAIL because result-state components do not exist yet
 <RecipeDetailModal recipe={selectedRecipe} open={Boolean(selectedRecipe)} onClose={() => setSelectedRecipe(null)} />
 ```
 
-- [ ] **Step 4: Run test suite to verify pass**
+- [x] **Step 4: Run test suite to verify pass**
 
 Run: `npm test`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/RecipeSkeletonList.jsx src/components/RecipeGrid.jsx src/components/RecipeCard.jsx src/components/RecipeDetailModal.jsx src/components/ErrorBanner.jsx src/pages/HomePage.jsx src/pages/HomePage.test.jsx
